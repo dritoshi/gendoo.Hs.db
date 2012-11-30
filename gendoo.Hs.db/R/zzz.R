@@ -13,24 +13,29 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
   ## DB connection
   ##
   require("methods", quietly = TRUE)
-  
+
+  ## dbfile
   dbfile <- system.file("extdata", "gendoo.Hs.db.sqlite",
                         package = pkgname, lib.loc = libname)
   assign("dbfile", dbfile, envir = datacache)
-	
+
+  ## dbconn 
   driver <- dbDriver("SQLite")
   db <- dbfile
   dbconn <- dbConnect(driver, db)
   assign("dbconn", dbconn, envir = datacache)
-	
+
+  ## dbshow
   dbshow <- function() {
     cat("Load database.\n")
   }
   assign("dbshow", dbshow, envir = datacache)
 
+  ## dbschema
   dbschema <- function() cat(dbGetQuery(dbconn, "SELECT * FROM sqlite_master;")$sql)
   assign("dbschema", dbschema, envir = datacache)
 
+  ## dbInfo
   dbInfo <- function() dbGetQuery(dbconn, "SELECT * FROM METADATA;")
   assign("dbInfo", dbInfo, envir = datacache)
 
@@ -39,12 +44,24 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
   ##
   ## Definition of Classes
   ##
-  setClass("GendooGene",
+
+  ## Make class
+  class.template <- 'setClass("CLASSNAME",
     representation(name = "character"),
-    prototype(name = "GendooGene")
-  )
-	
+    prototype(name = "CLASSNAME")
+  )'
+  class.sub.name <- c("Gene", "MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.class  <- gsub("CLASSNAME", class.name, class.template)
+    eval(parse(text = new.class))
+  })
+
+  ##
   ## Definition of Methods
+  ##
+  
+  ## GendooGene
   # cols
   setMethod("cols",
     "GendooGene",
@@ -55,7 +72,6 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
       )
     }
   )
-
   # keytypes
   setMethod("keytypes",
     "GendooGene",
@@ -66,7 +82,6 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
       )
     }
   )
-
   # keys
   setMethod("keys",
     "GendooGene",
@@ -76,7 +91,6 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
       return(k)
     }
   )
-  
   # select
   setMethod("select", "GendooGene",
     function(x, keys, cols, keytype) {
@@ -103,11 +117,19 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
       return(k)
     }
   )
+
+  ## Export class
+  export.template <- '
+    CLASSNAME <- new("CLASSNAME")
+    assign("CLASSNAME", CLASSNAME, envir = ns)
+    namespaceExport(ns, "CLASSNAME")'
+  class.sub.name <- c("Gene", "MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.export <- gsub("CLASSNAME", class.name, export.template)
+    eval(parse(text = new.export))
+  })
   
-  # Creation of Objects
-  GendooGene <- new("GendooGene")
-  assign("GendooGene", GendooGene, envir = ns)
-  namespaceExport(ns, "GendooGene")
 }
 
 .onUnload <- function(libpath)
