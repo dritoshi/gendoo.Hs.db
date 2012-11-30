@@ -118,6 +118,79 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
     }
   )
 
+  ## MeSHx
+  # cols
+  method.template <- 'setMethod("cols",
+    "CLASSNAME",
+    function(x) { return(c("gene_id", "mesh")) }
+  )'
+  class.sub.name <- c("MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.method <- gsub("CLASSNAME", class.name, method.template)
+    eval(parse(text = new.method))
+  })
+  # keytypes
+  method.template <- 'setMethod("keytypes",
+    "CLASSNAME",
+    function(x) { return(c("gene_id", "mesh")) }
+  )'
+  class.sub.name <- c("MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.method <- gsub("CLASSNAME", class.name, method.template)
+    eval(parse(text = new.method))
+  })
+  # keys
+  method.template <- 'setMethod("keys",
+    "CLASSNAME",
+    function(x, keytype){
+      query <- paste0("SELECT ", keytype, " FROM CLASSSUBNAME;")
+      k     <- dbGetQuery(gendoo.Hs_dbconn(), query)
+      return(k)
+    }
+  )'
+  class.sub.name <- c("MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.method <- gsub("CLASSNAME",    class.name,     method.template)
+    new.method <- gsub("CLASSSUBNAME", class.sub.name, new.method)
+    eval(parse(text = new.method))
+  })
+  # select
+  method.template <- 'setMethod("select", "CLASSNAME",
+    function(x, keys, cols, keytype) {
+      if (length(cols) > 1) {
+        c <- cols[1]
+	for (i in 2:(length(cols))){
+  	  c <- paste(c, cols[i], sep = ",")
+	}
+      } else {
+        c <- cols
+      }
+      keys <- paste0(\'"\', keys, \'"\')
+      ke <- paste(keytype, keys, sep ="=")
+      if (length(ke) > 1)  {
+        kee <- ke[1]
+	for (i in 2:(length(ke))){
+  	  kee <- paste(kee, ke[i], sep = " OR ")
+	}
+    } else{
+      kee <- ke
+    }
+      query <- paste0("SELECT ", c, " FROM CLASSSUBNAME WHERE ", kee)
+      k <- dbGetQuery(gendoo.Hs_dbconn(), query)
+      return(k)
+    }
+  )'
+  class.sub.name <- c("MeSHA", "MeSHB", "MeSHC", "MeSHD", "MeSHG", "MeSHS")
+  sapply(class.sub.name, function(class.sub.name) {
+    class.name <- paste0("Gendoo", class.sub.name)
+    new.method <- gsub("CLASSNAME",    class.name,     method.template)
+    new.method <- gsub("CLASSSUBNAME", class.sub.name, new.method)
+    eval(parse(text = new.method))
+  })
+  
   ## Export class
   export.template <- '
     CLASSNAME <- new("CLASSNAME")
