@@ -2,13 +2,14 @@
 
 test_select_gene <- function() {
   my.keys    <- c(1, 2, 3)
-  my.cols    <- c("_id", "gene_id")
+  my.cols    <- c("_id", "gene_id", "gene_symbol")
   my.keytype <- c("_id") 
   
   results <- select(GendooGene, keys = my.keys, cols = my.cols, keytype = my.keytype)
 
   checkEquals(results[,1], c(1, 2, 3))
-  checkEquals(results[,2], c("A1BG", "A2M", "A2MP"))
+  checkEquals(results[,2], c("1", "2", "3"))
+  checkEquals(results[,3], c("A1BG", "A2M", "A2MP"))
 }
 
 test_select_mesha <- function() {
