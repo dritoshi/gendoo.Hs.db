@@ -13,4 +13,6 @@ ls("package:gendoo.Hs.db")
 
 example(GendooGene)
 example(GendooMeSHA)
+
+citation("gendoo.Hs.db")
 ```
