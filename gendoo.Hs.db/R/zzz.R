@@ -102,23 +102,45 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
       } else {
         c <- cols
       }
+      
       keys <- paste0('"', keys, '"')
-      ke <- paste(keytype, keys, sep ="=")
+      ke   <- paste(keytype, keys, sep ="=")
+      
+      kee <- c()
       if (length(ke) > 1)  {
-        kee <- ke[1]
-	for (i in 2:(length(ke))){
-  	  kee <- paste(kee, ke[i], sep = " OR ")
-	}
-    } else{
-      kee <- ke
-    }
-      query <- paste0("SELECT ", c, " FROM genes WHERE ", kee)
-      k <- dbGetQuery(gendoo.Hs_dbconn(), query)
-      return(k)
+        if(length(ke) >= 1000) {
+          ke_loc <- div(1:length(ke), ceiling(length(keys)/500))
+          for(j in 1:ceiling(length(keys)/500)){
+            kee[j] <- paste(ke[ke_loc[[j]]], sep="",collapse=" OR ")
+          }
+        } else {          
+          kee <- paste(ke, sep="", collapse=" OR ")
+        }          
+      } else {
+        kee <- ke
+      }
+
+      # SQL
+      kk <- c()
+      for(i in 1:length(kee)){
+        query <- paste0("SELECT ", c, " FROM genes WHERE ", kee[i], ";")
+        k <- dbGetQuery(gendoo.Hs_dbconn(), query)        
+        kk <- rbind(kk,k)
+      }
+      return(unique(kk))
     }
   )
 
   ## MeSHx
+  # vector dividing function
+  div <- function(x,d=1) {
+    y <- list()
+    delta <- ceiling(length(x) / d)
+    for(i in 1:d){
+      y[[i]] <- as.vector(na.omit(x[((i-1)*delta+1):(i*delta)]))
+    }
+    return(y)
+  }
   # cols
   method.template <- 'setMethod("cols",
     "CLASSNAME",
