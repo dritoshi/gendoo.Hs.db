@@ -21,6 +21,8 @@
   my.keys <- c(1)
   my.cols <- c("gene_id", "gene_symbol", "gene_description",
               "gene_synonyms", "gene_type")
-  select(GendooGene, keys = my.keys, cols = my.cols, keytype = my.keytype)
+  my.genes <- select(GendooGene, keys = my.keys, cols = my.cols, keytype
+  = my.keytype)
+  head(my.genes)
 }
 \keyword{datasets}

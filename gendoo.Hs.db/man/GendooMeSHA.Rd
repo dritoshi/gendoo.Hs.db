@@ -32,6 +32,8 @@
   ## search
   my.keys <- c(1, 2, 3)
   my.cols <- c("gene_id", "mesh")
-  select(GendooMeSHA, keys = my.keys, cols = my.cols, keytype = my.keytype)
+  my.mesh <- select(GendooMeSHA, keys = my.keys, cols = my.cols, keytype
+  = my.keytype)
+  head(my.mesh)
 }
 \keyword{datasets}
