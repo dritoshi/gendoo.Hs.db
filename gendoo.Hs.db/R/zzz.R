@@ -141,6 +141,7 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
     }
     return(y)
   }
+
   # cols
   method.template <- 'setMethod("cols",
     "CLASSNAME",
@@ -224,7 +225,7 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
     new.method <- gsub("CLASSSUBNAME", class.sub.name, new.method)
     eval(parse(text = new.method))
   })
-  
+
   ## Export class
   export.template <- '
     CLASSNAME <- new("CLASSNAME")
