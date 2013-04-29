@@ -1,0 +1,14 @@
+gendoo.Hs	gendoo.HsBASE
+gendoo.Hs	gendoo.Hs_dbconn
+gendoo.Hs.db	gendoo.HsBASE
+gendoo.Hs_dbconn	gendoo.Hs_dbconn
+gendoo.Hs_dbfile	gendoo.Hs_dbconn
+gendoo.Hs_dbInfo	gendoo.Hs_dbconn
+gendoo.Hs_dbschema	gendoo.Hs_dbconn
+GendooGene	GendooGene
+GendooMeSHA	GendooMeSHA
+GendooMeSHB	GendooMeSHA
+GendooMeSHC	GendooMeSHA
+GendooMeSHD	GendooMeSHA
+GendooMeSHG	GendooMeSHA
+GendooMeSHS	GendooMeSHA

@@ -1,0 +1,18 @@
+Loading required package: grDevices
+Loading required package: graphics
+Loading required package: stats
+Loading required package: utils
+* installing *source* package ‘gendoo.Hs.db’ ...
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+Loading required package: grDevices
+Loading required package: graphics
+Loading required package: stats
+Loading required package: utils
+
+* DONE (gendoo.Hs.db)

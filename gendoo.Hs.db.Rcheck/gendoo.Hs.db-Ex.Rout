@@ -1,0 +1,249 @@
+
+R Under development (unstable) (2012-11-16 r61126) -- "Unsuffered Consequences"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "gendoo.Hs.db"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('gendoo.Hs.db')
+Loading required package: AnnotationDbi
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following object is masked from ‘package:stats’:
+
+    xtabs
+
+The following objects are masked from ‘package:base’:
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, cbind,
+    colnames, duplicated, eval, get, intersect, lapply, mapply, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, rbind, rep.int,
+    rownames, sapply, setdiff, table, tapply, union, unique
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: AnnotationForge
+Loading required package: DBI
+Loading required package: RSQLite
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("GendooGene")
+> ### * GendooGene
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GendooGene
+> ### Title: The GendooGene for gendoo.Hs
+> ### Aliases: GendooGene
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   keytypes(GendooGene)
+[1] "gene_id"          "gene_symbol"      "gene_description" "gene_synonyms"   
+[5] "gene_type"       
+>   cols(GendooGene)
+[1] "gene_id"          "gene_symbol"      "gene_description" "gene_synonyms"   
+[5] "gene_type"       
+> 
+>   my.keytype <- c("gene_id")
+>   gene_ids <- keys(GendooGene, keytype = my.keytype)
+> 
+>   ## search
+>   my.keys <- c(1)
+>   my.cols <- c("gene_id", "gene_symbol", "gene_description",
++               "gene_synonyms", "gene_type")
+>   my.genes <- select(GendooGene, keys = my.keys, cols = my.cols, keytype
++   = my.keytype)
+>   head(my.genes)
+  gene_id gene_symbol       gene_description
+1       1        A1BG alpha-1-B glycoprotein
+                                             gene_synonyms      gene_type
+1 A1B|ABG|DKFZp686F0970|GAB|HYST2477|alpha 1B-glycoprotein protein-coding
+> 
+> 
+> 
+> cleanEx()
+> nameEx("GendooMeSHA")
+> ### * GendooMeSHA
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: GendooMeSHA
+> ### Title: The GendooMeSH for gendoo.Hs
+> ### Aliases: GendooMeSHA GendooMeSHB GendooMeSHC GendooMeSHD GendooMeSHG
+> ###   GendooMeSHS
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   keytypes(GendooMeSHA)
+[1] "gene_id" "mesh"   
+>   cols(GendooMeSHA)
+[1] "gene_id" "mesh"   
+> 
+>   my.keytype <- c("gene_id")
+>   gene_ids <- keys(GendooMeSHA, keytype = my.keytype)
+> 
+>   ## search
+>   my.keys <- c(1, 2, 3)
+>   my.cols <- c("gene_id", "mesh")
+>   my.mesh <- select(GendooMeSHA, keys = my.keys, cols = my.cols, keytype
++   = my.keytype)
+>   head(my.mesh)
+  gene_id    mesh
+1       1 D002904
+2       1 D008099
+3       1 D010189
+4       1 D002890
+5       1 D002888
+6       1 D006098
+> 
+> 
+> 
+> cleanEx()
+> nameEx("gendoo.HsBASE")
+> ### * gendoo.HsBASE
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gendoo.Hs.db
+> ### Title: Gendoo Human Database package
+> ### Aliases: gendoo.Hs.db gendoo.Hs
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+>   ls("package:gendoo.Hs.db")
+ [1] "GendooGene"         "GendooMeSHA"        "GendooMeSHB"       
+ [4] "GendooMeSHC"        "GendooMeSHD"        "GendooMeSHG"       
+ [7] "GendooMeSHS"        "gendoo.Hs"          "gendoo.Hs_dbInfo"  
+[10] "gendoo.Hs_dbconn"   "gendoo.Hs_dbfile"   "gendoo.Hs_dbschema"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("gendoo.Hs_dbconn")
+> ### * gendoo.Hs_dbconn
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gendoo.Hs_dbconn
+> ### Title: Collect information about the package annotation DB
+> ### Aliases: gendoo.Hs gendoo.Hs_dbconn gendoo.Hs_dbfile gendoo.Hs_dbschema
+> ###   gendoo.Hs_dbInfo
+> ### Keywords: utilities datasets
+> 
+> ### ** Examples
+> 
+>   ## Count the number of rows in the "metadata" table:
+>   dbGetQuery(gendoo.Hs_dbconn(), "SELECT COUNT(*) FROM metadata")
+  COUNT(*)
+1        9
+> 
+>   ## The connection object returned by gendoo.Hs_dbconn() was
+>   ## created with:
+>   dbConnect(SQLite(), dbname=gendoo.Hs_dbfile(), cache_size=64000,
++   synchronous=0)
+<SQLiteConnection: DBI CON (8140, 1)> 
+> 
+>   gendoo.Hs()
+Load database.
+> 
+>   gendoo.Hs_dbschema()
+CREATE TABLE genes (
+  _id INTEGER PRIMARY KEY,
+  gene_id VARCHAR(10) NOT NULL,           -- Entrez Gene ID
+  gene_symbol  VARCHAR(100),
+  gene_description text,
+  gene_synonyms    text,
+  gene_type       VARCHAR(100)
+) CREATE TABLE MeSHA (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE MeSHB (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE MeSHC (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE MeSHD (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE MeSHG (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE MeSHS (
+  gene_id INTEGER NOT NULL,                    -- REFERENCES genes
+  mesh VARCHAR(10) NOT NULL,               -- Mesh ID
+  FOREIGN KEY (gene_id) REFERENCES genes (gene_id)
+) CREATE TABLE metadata (
+  name NOT NULL, 
+  value TEXT
+) CREATE INDEX Fgenes ON genes (gene_id) CREATE INDEX Fmesha ON MeSHA (gene_id) CREATE INDEX Fmeshb ON MeSHB (gene_id) CREATE INDEX Fmeshc ON MeSHC (gene_id) CREATE INDEX Fmeshd ON MeSHD (gene_id) CREATE INDEX Fmeshg ON MeSHG (gene_id) CREATE INDEX Fmeshs ON MeSHS (gene_id)> 
+>   gendoo.Hs_dbInfo()
+             name                   value
+1      SOURCEDATE              8-Jan-2009
+2      SOURCENAME            Gendoo Human
+3       SOURCEURL http://gendoo.dbcls.jp/
+4        DBSCHEMA            gendoo.Hs.db
+5 DBSCHEMAVERSION                     1.0
+6        ORGANISM            Homo sapiens
+7         SPECIES                   Human
+8         package           AnnotationDbi
+9         Db type                GendooDb
+> 
+>   gendoo.Hs_dbfile()
+[1] "/home/itoshi/Projects/dev/R/meshr/gendoo.Hs.db/gendoo.Hs.db.Rcheck/gendoo.Hs.db/extdata/gendoo.Hs.db.sqlite"
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  3.416 0.088 3.519 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

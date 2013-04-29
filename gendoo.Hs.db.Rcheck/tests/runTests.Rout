@@ -1,0 +1,66 @@
+
+R Under development (unstable) (2012-11-16 r61126) -- "Unsuffered Consequences"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> BiocGenerics:::testPackage("gendoo.Hs.db")
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following object is masked from 'package:stats':
+
+    xtabs
+
+The following objects are masked from 'package:base':
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, cbind,
+    colnames, duplicated, eval, get, intersect, lapply, mapply, mget,
+    order, paste, pmax, pmax.int, pmin, pmin.int, rbind, rep.int,
+    rownames, sapply, setdiff, table, tapply, union, unique
+
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+
+
+RUNIT TEST PROTOCOL -- Mon Mar 25 09:42:22 2013 
+*********************************************** 
+Number of test functions: 2 
+Number of errors: 0 
+Number of failures: 0 
+
+ 
+1 Test Suite : 
+gendoo.Hs.db RUnit Tests - 2 test functions, 0 errors, 0 failures
+Number of test functions: 2 
+Number of errors: 0 
+Number of failures: 0 
+> 
+> proc.time()
+   user  system elapsed 
+  2.968   0.056   3.021 

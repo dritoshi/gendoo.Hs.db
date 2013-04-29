@@ -1,0 +1,5 @@
+GendooGene              The GendooGene for gendoo.Hs
+GendooMeSHA             The GendooMeSH for gendoo.Hs
+gendoo.Hs.db            Gendoo Human Database package
+gendoo.Hs_dbconn        Collect information about the package
+                        annotation DB

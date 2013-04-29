@@ -1,0 +1,86 @@
+* using log directory ‘/home/itoshi/Projects/dev/R/meshr/gendoo.Hs.db/gendoo.Hs.db.Rcheck’
+* using R Under development (unstable) (2012-11-16 r61126)
+* using platform: i686-pc-linux-gnu (32-bit)
+* using session charset: UTF-8
+* checking for file ‘gendoo.Hs.db/DESCRIPTION’ ... OK
+* this is package ‘gendoo.Hs.db’ version ‘0.99.0’
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking whether package ‘gendoo.Hs.db’ can be installed ... OK
+* checking installed package size ... NOTE
+  installed size is 131.4Mb
+  sub-directories of 1Mb or more:
+    extdata  131.3Mb
+* checking package directory ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... WARNING
+Subdirectory ‘data’ contains no data sets.
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... WARNING
+ エラー：  .onLoadはloadNamespace()（gendoo.Hs.dbに対する）の中で失敗しました、詳細は: 
+ call: do.call(as.character(drvName), list(...)) 
+ error:  関数 "SQLite" を見つけることができませんでした  
+ 実行が停止されました 
+
+A namespace must be able to be loaded with just the base namespace
+loaded: otherwise if the namespace gets loaded by a saved object, the
+session will be unable to start.
+
+Probably some imports need to be declared in the NAMESPACE file.
+* checking whether the namespace can be unloaded cleanly ... WARNING
+ エラー：  .onLoadはloadNamespace()（gendoo.Hs.dbに対する）の中で失敗しました、詳細は: 
+ call: do.call(as.character(drvName), list(...)) 
+ error:  関数 "SQLite" を見つけることができませんでした  
+ 実行が停止されました 
+* checking for unstated dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+File ‘gendoo.Hs.db/R/zzz.R’:
+  .onLoad calls:
+    require("methods", quietly = TRUE)
+    cat("Load database.\n")
+    cat(dbGetQuery(dbconn, "SELECT * FROM sqlite_master;")$sql)
+
+Package startup functions should not change the search path.
+Package startup functions should use ‘packageStartupMessage’ to
+  generate messages.
+See section ‘Good practice’ in '?.onAttach'.
+
+* checking Rd files ... OK
+* checking Rd metadata ... WARNING
+Rd files with duplicated alias 'gendoo.Hs':
+  ‘gendoo.HsBASE.Rd’ ‘gendoo.Hs_dbconn.Rd’
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... OK
+* checking for unstated dependencies in tests ... OK
+* checking tests ... OK
+  Running ‘runTests.R’
+* checking PDF version of manual ... OK
+WARNING: There were 4 warnings.
+NOTE: There were 2 notes.
+See
+  ‘/home/itoshi/Projects/dev/R/meshr/gendoo.Hs.db/gendoo.Hs.db.Rcheck/00check.log’
+for details.

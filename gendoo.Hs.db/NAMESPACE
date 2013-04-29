@@ -9,5 +9,7 @@ export(
   gendoo.Hs_dbconn,
   gendoo.Hs_dbfile,
   gendoo.Hs_dbschema,
-  gendoo.Hs_dbInfo
+  gendoo.Hs_dbInfo,
+  gendoo.species,
+  gendoo.organism
 )

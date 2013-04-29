@@ -1,0 +1,13 @@
+import(methods)
+import(AnnotationForge)
+import(AnnotationDbi)
+import(RSQLite)
+import(DBI)
+
+export(
+  gendoo.Hs,
+  gendoo.Hs_dbconn,
+  gendoo.Hs_dbfile,
+  gendoo.Hs_dbschema,
+  gendoo.Hs_dbInfo
+)

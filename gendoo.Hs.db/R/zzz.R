@@ -7,6 +7,9 @@ gendoo.Hs_dbfile   <- function() get("dbfile",   envir = datacache)
 gendoo.Hs_dbschema <- function() get("dbschema", envir = datacache)()
 gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
 
+gendoo.species     <- function() get("species",  envir = datacache)()
+gendoo.organism    <- function() get("organism", envir = datacache)()
+ 
 .onLoad <- function(libname, pkgname)
 {
   ##
@@ -38,6 +41,14 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
   ## dbInfo
   dbInfo <- function() dbGetQuery(dbconn, "SELECT * FROM METADATA;")
   assign("dbInfo", dbInfo, envir = datacache)
+
+  ## species 
+  species <- function() dbGetQuery(dbconn, 'SELECT value FROM METADATA where name = "SPECIES";')[1,]
+  assign("species", species, envir = datacache)
+
+  ## ORGANISM
+  organism <- function() dbGetQuery(dbconn, 'SELECT value FROM METADATA where name = "ORGANISM";')[1,]
+  assign("organism", organism, envir = datacache)  
 
   ns <- asNamespace(pkgname)
 
@@ -127,6 +138,8 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
         k <- dbGetQuery(gendoo.Hs_dbconn(), query)        
         kk <- rbind(kk,k)
       }
+      kk <- cbind(kk, gendoo.species())
+      colnames(kk)[ncol(kk)] <- "species"
       return(unique(kk))
     }
   )
@@ -215,6 +228,8 @@ gendoo.Hs_dbInfo   <- function() get("dbInfo",   envir = datacache)()
         k <- dbGetQuery(gendoo.Hs_dbconn(), query)
         kk <- rbind(kk, k)
       }
+      kk <- cbind(kk, gendoo.species())
+      colnames(kk)[ncol(kk)] <- "species"
       return(unique(kk))
     }
   )'

@@ -1,0 +1,29 @@
+citHeader("To cite gendoo.Hs.db in publications use:")
+
+citEntry(entry="Article",
+  author = "Nakazato, T., Bono, H., Matsuda, H., and Takagi, T.",
+  title = "Gendoo: Functional profiling of gene and disease features using MeSH vocabulary.",
+  journal = "Nucleic Acids Research",
+  year = "2009",
+  volume = "37",
+  number = "Suppl. 2",
+  pages = "W166-W169",
+  textVersion = paste(
+    "Nakazato, T., Bono, H., Matsuda, H., and Takagi, T.",
+    "Gendoo: Functional profiling of gene and disease features using MeSH vocabulary.",
+    "Nucleic Acids Research, 37(Suppl. 2) (Web Server Issue):W166-W169 2009.")
+)
+
+citEntry(entry="Article",
+  author = "Nakazato, T., Takinaka, T., Mizuguchi, H., Matsuda, H., Bono, H., and Asogawa, M.",
+  title = "BioCompass: A novel functional inference tool that utilizes MeSH hierarchy to analyze groups of genes.",
+  journal = "In Silico Biology",
+  year = "2008",
+  volume = "8",
+  number = "1",
+  pages = "53-61",
+  textVersion = paste(
+    "Nakazato, T., Takinaka, T., Mizuguchi, H., Matsuda, H., Bono, H., and Asogawa, M.",
+    "BioCompass: A novel functional inference tool that utilizes MeSH hierarchy to analyze groups of genes.",
+    "In Silico Biology, 8(1): 53-61, 2008.")
+)

@@ -6,7 +6,7 @@
 }
 \details{
   GendooGene provides Entrez Gene IDs with its annotations, 
-  Gene ID, symbol, description, synonyms and gene type.
+  Gene ID, symbol, description, synonyms, gene type, and species.
   You can retrive these data from the object using by select method.
   See examples.
 }
